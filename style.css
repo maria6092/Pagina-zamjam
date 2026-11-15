@@ -19,7 +19,7 @@
 *{margin:0;padding:0}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--bar) + 16px);-webkit-text-size-adjust:100%}
-body{font:500 1.0625rem/1.65 var(--body);background:var(--leche);color:var(--tinta);padding-top:var(--bar);overflow-x:hidden;min-height:100vh}
+body{font:500 1.0625rem/1.65 var(--body);background:var(--leche);color:var(--tinta);padding-top:var(--bar);overflow-x:hidden;min-height:100vh; font-weight: 700}
 /* Trama de mandos fija al fondo de todas las páginas */
 body::before{content:'';position:fixed;inset:0;z-index:-1;background:url(img/trama-mandos-clara.webp) center/cover no-repeat;opacity:.18;pointer-events:none}
 img,svg,video{max-width:100%;display:block}
@@ -27,7 +27,7 @@ a{color:inherit}
 button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--fresa);outline-offset:3px}
 main:focus{outline:none}
-h1{font-family:var(--disp);letter-spacing:0;line-height:1.1;font-weight:700;text-wrap:balance}
+h1{font-family:var(--disp);letter-spacing:0;line-height:1.1;font-weight:800;text-wrap:balance}
 h1{font-size:clamp(2.3rem,7vw + .4rem,4.6rem)}
 h2{font-family:var(--body);font-size:clamp(1.6rem,3.2vw + .6rem,2.5rem);margin-bottom:12px; font-weight:bold}
 h3{font-family:var(--body);font-size:1.2rem;margin-bottom:6px; font-weight:bold}
