@@ -25,7 +25,26 @@ $$('img[data-fallback]').forEach(img => {
 });
 
 /* Enlaces de contacto */
-$$('a[data-mail]').forEach(a => { a.href = 'mailto:' + CONFIG.email; });
+const toast = msg => {
+  let t = $('#toast');
+  if (!t) {
+    t = document.createElement('div'); t.id = 'toast'; t.setAttribute('role', 'status');
+    document.body.append(t);
+  }
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 4500);
+};
+$$('a[data-mail]').forEach(a => {
+  a.href = 'mailto:' + CONFIG.email;
+  a.addEventListener('click', () => {
+    // si tras 1,2 s la página sigue visible, no se abrió ninguna app de correo
+    setTimeout(async () => {
+      if (document.visibilityState !== 'visible') return;
+      try { await navigator.clipboard.writeText(CONFIG.email); } catch (_) {}
+      toast('No se pudo abrir tu correo. Nuestra dirección es ' + CONFIG.email + ' (copiada)');
+    }, 1200);
+  });
+});
 
 /* Botones de compra de entrada → web externa */
 $$('a[data-entradas]').forEach(a => {

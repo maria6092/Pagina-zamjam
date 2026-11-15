@@ -112,7 +112,6 @@ html.nav-open,html.lb-open{overflow:hidden}
 /* ---------- Portada ---------- */
 .hero{position:relative;isolation:isolate;padding:clamp(44px,8vw,96px) 0 clamp(52px,8vw,88px);overflow:hidden;color:#fff;background:linear-gradient(115deg,rgba(29,10,43,.95) 0%,rgba(49,25,66,.84) 45%,rgba(107,53,135,.60) 100%),url(img/trama-mandos-oscura.webp) center/cover no-repeat,var(--zarza)}
 .hero h1{color:#fff}.hero .lead{color:#E6D3F0}
-.hero::before,.hero::after,.head::before,.head::after{content:'';position:absolute;z-index:-1;pointer-events:none}
 .hero::before{width:min(40vw,400px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 32% 30%,rgba(205,166,228,.55) 0%,rgba(183,136,210,.38) 45%,rgba(138,78,168,.22) 100%);left:-8%;top:-16%}
 .hero::after{width:46px;height:28px;border-radius:55% 45% 50% 50%/60% 50% 50% 40%;background:var(--crema);opacity:.9;right:6%;top:30px;transform:rotate(-24deg);box-shadow:34px 34px 0 -8px var(--crema)}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,64px);align-items:center}
@@ -291,9 +290,10 @@ footer{background:linear-gradient(180deg,rgba(29,10,43,.88),rgba(29,10,43,.97)),
   .foot>div:first-child{grid-column:1/-1}
 }
 @media(max-width:700px){
-  .news article{grid-template-columns:1fr 88px;gap:6px 18px;padding:20px 18px}
-  .news article time{grid-column:1/-1}
-  .news .ph{min-height:0;aspect-ratio:1;font-size:.7rem;padding:4px}
+  .news article{grid-template-columns:44px minmax(0,1fr);gap:10px 14px;padding:20px 18px}
+  .news article>h2{grid-column:1;grid-row:1;margin:0;line-height:1}
+  .news article>div:not(.ph){grid-column:2;grid-row:1;min-width:0}
+  .news article>.ph{grid-column:1/-1;grid-row:2;aspect-ratio:16/9;max-height:200px;min-height:0}
   .next article{grid-template-columns:64px 1fr;gap:14px 18px;padding:18px}
   .next .count,.next article>.go{grid-column:1/-1}
   .day{font-size:2rem}
@@ -421,3 +421,7 @@ footer{background:linear-gradient(180deg,rgba(29,10,43,.88),rgba(29,10,43,.97)),
 .team.jury{display:flex;flex-wrap:wrap;justify-content:center;gap:36px 40px;text-align:center}
 .team.jury>div{flex:0 1 200px;display:flex;flex-direction:column;align-items:center}
 .team.jury .ph{width:min(100%,180px);margin-inline:auto}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));translate:-50% 20px;opacity:0;pointer-events:none;z-index:60;max-width:min(92vw,420px);padding:14px 18px;border-radius:14px;background:var(--zarza);color:#fff;border:2px solid var(--lila);font-weight:600;text-align:center;transition:.25s}
+#toast.show{opacity:1;translate:-50% 0}
+.hero-deco{position:absolute;z-index:-1;right:4%;top:24px;width:clamp(70px,12vw,150px);height:auto;pointer-events:none;transform:rotate(-8deg)}
+@media(max-width:860px){.hero-deco{width:64px;right:12px;top:14px;opacity:.9}}
